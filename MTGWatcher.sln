@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MTGWatcher", "MTGWatcher\MTGWatcher.csproj", "{6BBEAFC0-C87C-468D-9098-081B2FFD8B78}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WatcherDB", "WatcherDB\WatcherDB.sqlproj", "{DD862EDE-9C43-4EC8-9EA0-81F756420CC3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BBEAFC0-C87C-468D-9098-081B2FFD8B78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BBEAFC0-C87C-468D-9098-081B2FFD8B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BBEAFC0-C87C-468D-9098-081B2FFD8B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BBEAFC0-C87C-468D-9098-081B2FFD8B78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD862EDE-9C43-4EC8-9EA0-81F756420CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD862EDE-9C43-4EC8-9EA0-81F756420CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD862EDE-9C43-4EC8-9EA0-81F756420CC3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DD862EDE-9C43-4EC8-9EA0-81F756420CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD862EDE-9C43-4EC8-9EA0-81F756420CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD862EDE-9C43-4EC8-9EA0-81F756420CC3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://mtgwatcher.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = MTGWatcher\\MTGWatcher.csproj
+		SccProjectName1 = MTGWatcher
+		SccLocalPath1 = MTGWatcher
+		SccProjectUniqueName2 = WatcherDB\\WatcherDB.sqlproj
+		SccProjectName2 = WatcherDB
+		SccLocalPath2 = WatcherDB
+	EndGlobalSection
+EndGlobal

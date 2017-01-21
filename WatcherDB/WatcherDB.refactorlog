@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="0a995f88-36af-4148-8261-99f1bb06652d" ChangeDateTime="01/12/2017 13:09:14">
+    <Property Name="ElementName" Value="[dbo].[MTGCard].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MTGCard]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CardId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4c8ee2c2-8cd3-4573-b0d2-0d1d6198235f" ChangeDateTime="01/12/2017 13:09:22">
+    <Property Name="ElementName" Value="[dbo].[MTGCard].[CardId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MTGCard]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CrdId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="01571157-a4b4-4a73-b6fc-8dea08864aa0" ChangeDateTime="01/12/2017 15:38:58">
+    <Property Name="ElementName" Value="[dbo].[MTGCard].[CrdId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MTGCard]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CardId" />
+  </Operation>
+</Operations>
