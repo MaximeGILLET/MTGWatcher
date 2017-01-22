@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44343</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -211,6 +211,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\APIHelper.cs" />
     <Compile Include="Models\CardModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -223,11 +224,25 @@
     <Content Include="Content\BANNER.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Logo.ico" />
+    <Content Include="Content\Logo2.ico" />
     <Content Include="Content\MKM\CardmarketLogoBlue2.png" />
     <Content Include="Content\MKM\McmLogoBlue3.png" />
+    <Content Include="Content\MTG_Logo.png" />
     <Content Include="Content\Symbols\0.svg" />
     <Content Include="Content\Symbols\1.svg" />
+    <Content Include="Content\Symbols\10.svg" />
+    <Content Include="Content\Symbols\11.svg" />
+    <Content Include="Content\Symbols\12.svg" />
+    <Content Include="Content\Symbols\13.svg" />
+    <Content Include="Content\Symbols\14.svg" />
+    <Content Include="Content\Symbols\15.svg" />
+    <Content Include="Content\Symbols\16.svg" />
+    <Content Include="Content\Symbols\17.svg" />
+    <Content Include="Content\Symbols\18.svg" />
+    <Content Include="Content\Symbols\19.svg" />
     <Content Include="Content\Symbols\2.svg" />
+    <Content Include="Content\Symbols\20.svg" />
     <Content Include="Content\Symbols\2B.svg" />
     <Content Include="Content\Symbols\2G.svg" />
     <Content Include="Content\Symbols\2R.svg" />
@@ -235,19 +250,32 @@
     <Content Include="Content\Symbols\2W.svg" />
     <Content Include="Content\Symbols\3.svg" />
     <Content Include="Content\Symbols\4.svg" />
+    <Content Include="Content\Symbols\5.svg" />
+    <Content Include="Content\Symbols\6.svg" />
+    <Content Include="Content\Symbols\7.svg" />
+    <Content Include="Content\Symbols\8.svg" />
+    <Content Include="Content\Symbols\9.svg" />
     <Content Include="Content\Symbols\B.svg" />
     <Content Include="Content\Symbols\BG.svg" />
     <Content Include="Content\Symbols\BP.svg" />
     <Content Include="Content\Symbols\BR.svg" />
-    <Content Include="Content\Symbols\C.svg" />
-    <Content Include="Content\Symbols\G.svg" />
+    <Content Include="Content\Symbols\C.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Symbols\G.svg">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\Symbols\GP.svg" />
     <Content Include="Content\Symbols\GU.svg" />
     <Content Include="Content\Symbols\GW.svg" />
     <Content Include="Content\Symbols\R.svg" />
     <Content Include="Content\Symbols\RG.svg" />
-    <Content Include="Content\Symbols\RP.svg" />
-    <Content Include="Content\Symbols\RW.svg" />
+    <Content Include="Content\Symbols\RP.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Symbols\RW.svg">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\Symbols\U.svg" />
     <Content Include="Content\Symbols\UB.svg" />
     <Content Include="Content\Symbols\UP.svg" />
@@ -255,8 +283,12 @@
     <Content Include="Content\Symbols\W.svg" />
     <Content Include="Content\Symbols\WB.svg" />
     <Content Include="Content\Symbols\WP.svg" />
-    <Content Include="Content\Symbols\WU.svg" />
-    <Content Include="Content\Symbols\X.svg" />
+    <Content Include="Content\Symbols\WU.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Content\Symbols\X.svg">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />

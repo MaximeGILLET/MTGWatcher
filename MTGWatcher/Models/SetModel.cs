@@ -28,7 +28,7 @@ namespace MTGWatcher.Models
         public List<object> booster { get; set; }
         public string mkm_name { get; set; }
         public string mkm_id { get; set; }
-        public List<JsonCard2> cards { get; set; }
+        public List<Card> cards { get; set; }
 
     }
 

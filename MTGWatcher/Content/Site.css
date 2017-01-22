@@ -22,3 +22,29 @@ select,
 textarea {
     max-width: 720px;
 }
+
+
+
+.gradient-uncommon{
+    background: -webkit-linear-gradient(left, #707070, #C0C0C0, #707070);
+	background: linear-gradient(left, #707070, #C0C0C0,#707070);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    font-size: 16px;
+}
+
+.gradient-rare{
+    background: -webkit-linear-gradient(left, #97824d, #d2bc84, #97824d);
+	background: linear-gradient(left, #97824d, #d2bc84,#97824d);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    font-size: 16px;
+}
+
+.gradient-mythic{
+    background: -webkit-linear-gradient(left, #ef2a24, #f58127, #ef2a24);
+	background: linear-gradient(left, #ef2a24, #f58127,#ef2a24);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    font-size: 16px;
+}

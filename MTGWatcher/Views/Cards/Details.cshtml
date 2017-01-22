@@ -5,33 +5,26 @@
 }
 
 <h2>Details</h2>
-
-<div>
-    <h4>Card</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cmc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cmc)
-        </dd>
-        <dd>
-           <img src="@Model.ImageUrl" alt="@Model.ImageUrl"/>
-        </dd>
-
-    </dl>
+<div class="row">
+    <div class="col-lg-12">
+        <h4>@Html.DisplayFor(model => model.Name)</h4>
+        <hr />
+    </div>
+    <div class="col-lg-4">
+        <img class="img-responsive" src="@Model.ImageUrl" alt="@Model.ImageUrl" />
+    </div>
+    <div class="col-lg-8">
+        <h4>@Html.DisplayFor(model => model.Name)</h4>
+        <p>@Model.Text</p>
+        <p><i>"@Model.Flavor"</i></p>
+        <p>artist : @Model.Artist</p>
+    </div>    
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CardId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<br />
+<div class="col-lg-12">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.CardId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+

@@ -35,7 +35,7 @@ namespace MTGWatcher.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult Index(CardListViewModel model)
+        public ActionResult Index(CardListViewModel model,string cardSearch)
         {
 
             if (model.Page == 0)
@@ -48,7 +48,16 @@ namespace MTGWatcher.Controllers
                 model.SortDir = "DESC";
                 model.Filter = "";
             }
+
+            var filterCards = new List<Card>();
             //var results = FilterCards(model);
+            if (!string.IsNullOrEmpty(cardSearch))
+            {
+                filterCards = db.Cards.Where(o => o.Name.Contains(cardSearch) || o.Text.Contains(cardSearch)).ToList();
+
+                if (filterCards.Count == 1)
+                    return RedirectToAction("Details", new { id = filterCards.FirstOrDefault().CardId });
+            }
 
             model.ResultCount = db.Cards.Count();
             model.PageSize = 25;
@@ -171,7 +180,7 @@ namespace MTGWatcher.Controllers
         {
             try
             {
-                var cards = JsonConvert.DeserializeObject<Dictionary<string, JsonCard>>(System.IO.File.ReadAllText(@"C:\Users\Néné\Documents\Nouveau dossier\MTGWatcher\MTGWatcher\MTGWatcher\StaticJson\AllCards.json"));
+                var cards = JsonConvert.DeserializeObject<Dictionary<string, JsonCard>>(System.IO.File.ReadAllText(@"C:\Users\Néné\Documents\ProjectWeb\MTGWatcher\MTGWatcher\MTGWatcher\StaticJson\AllCards.json"));
                 var dbCards = cards.Select(x => new Card(x.Value.name)).ToList();
                 db.Cards.AddRange(dbCards);
                 db.SaveChanges();
@@ -190,7 +199,7 @@ namespace MTGWatcher.Controllers
 
             try
             {
-                var sets = JsonConvert.DeserializeObject<Dictionary<string, JsonSet>>(System.IO.File.ReadAllText(@"C:\Users\m.gillet\Documents\GitHub\MTGWatcher\MTGWatcher\StaticJson\AllSets.json"));
+                var sets = JsonConvert.DeserializeObject<Dictionary<string, JsonSet>>(System.IO.File.ReadAllText(@"C:\Users\Néné\Documents\ProjectWeb\MTGWatcher\MTGWatcher\MTGWatcher\StaticJson\AllSets.json"));
                 RefreshSetsProgress = 0;
                 float i = 0;
                 foreach (var item in sets)
@@ -201,11 +210,10 @@ namespace MTGWatcher.Controllers
                     db.SaveChanges();
                     foreach (var card in item.Value.cards)
                     {
-
-                        var dbcard = db.Cards.Where(x=> x.Name==card.name).FirstOrDefault();
-                        if (dbcard == null) continue;
-                        dbcard.SetId = db.Sets.Where(x => x.Code == item.Value.code).FirstOrDefault().SetId;
-                        db.Entry(dbcard).State = EntityState.Modified;
+                        
+                        
+                        card.SetId = db.Sets.Where(x => x.Code == item.Value.code).FirstOrDefault().SetId;
+                        db.Cards.Add(card);
                     }
                 }
 
