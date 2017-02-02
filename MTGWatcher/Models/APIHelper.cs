@@ -9,12 +9,11 @@ using System.Xml;
 
 namespace MTGWatcher.Models
 {
-    class RequestHelper
+    public class RequestHelper
     {
-        public void makeRequest()
+        public static string mkmRequest(string url)
         {
             String method = "GET";
-            String url = "https://www.mkmapi.eu/ws/v2.0/expansions/1469/singles";
 
             HttpWebRequest request = WebRequest.CreateHttp(url) as HttpWebRequest;
             OAuthHeader header = new OAuthHeader();
@@ -22,10 +21,15 @@ namespace MTGWatcher.Models
             request.Method = method;
 
             HttpWebResponse response = request.GetResponse() as HttpWebResponse;
-            XmlDocument doc = new XmlDocument();
-            doc.Load(response.GetResponseStream());
+            string responseText;
+            using (var reader = new System.IO.StreamReader(response.GetResponseStream(), Encoding.UTF8))
+            {
+                 responseText = reader.ReadToEnd();
+            }
+            return responseText;
             // proceed further
         }
+
     }
 
 
@@ -54,10 +58,10 @@ namespace MTGWatcher.Models
         /// </summary>
         public OAuthHeader()
         {
-            String nonce = Guid.NewGuid().ToString("n");
-            //String nonce = "53eb1f44909d6";
-            String timestamp = (DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds.ToString();
-            //String timestamp = "1407917892";
+            //String nonce = Guid.NewGuid().ToString("n");
+            String nonce = "972WIs";
+            //String timestamp = (DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds.ToString();
+            String timestamp = "1485348905";
             /// Initialize all class members
             this.headerParams = new Dictionary<String, String>();
             this.headerParams.Add("oauth_consumer_key", this.appToken);
@@ -95,7 +99,7 @@ namespace MTGWatcher.Models
                 }
             }
 
-            /// Expand the base string by the encoded parameter=value pairs
+            /// Expand the base string by the encoded parameter=value pairs            
             List<String> paramStrings = new List<String>();
             foreach (KeyValuePair<String, String> parameter in encodedParams)
             {
@@ -105,7 +109,7 @@ namespace MTGWatcher.Models
             baseString += paramString;
 
             /// Create the OAuth signature
-            String signatureKey = Uri.EscapeDataString(this.appSecret)+ "&" + Uri.EscapeDataString(this.accessSecret);
+            String signatureKey = Uri.EscapeDataString(this.appSecret) + "&" + Uri.EscapeDataString(this.accessSecret);
             HMAC hasher = HMACSHA1.Create();
             hasher.Key = Encoding.UTF8.GetBytes(signatureKey);
             Byte[] rawSignature = hasher.ComputeHash(Encoding.UTF8.GetBytes(baseString));

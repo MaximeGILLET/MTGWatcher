@@ -215,6 +215,7 @@
     <Compile Include="Models\CardModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MkmModels.cs" />
     <Compile Include="Models\PaginationModel.cs" />
     <Compile Include="Models\SetModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -329,6 +330,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config" />
+    <Content Include="MkmFiles\mkmProduct.csv" />
+    <Content Include="MkmFiles\mkmProduct.gzip" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -389,6 +392,7 @@
     <Content Include="Views\Cards\Index.cshtml" />
     <Content Include="StaticJson\Sample.json" />
     <Content Include="StaticJson\AllSets.json" />
+    <Content Include="Views\Home\API.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Admin\" />

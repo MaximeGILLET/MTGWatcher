@@ -84,6 +84,8 @@ namespace MTGWatcher.Controllers
             }
             if(string.IsNullOrEmpty(card.ImageUrl)) card.ImageUrl = CardImageUrlFind(card.Name);
 
+            var product = JsonConvert.DeserializeObject<Product>(RequestHelper.mkmRequest("https://www.mkmapi.eu/ws/v2.0/products/find?search="+Url.Encode(card.Name)+"&exact=true&idGame=1&idLanguage=1"));
+
             return View(card);
         }
 
@@ -199,7 +201,7 @@ namespace MTGWatcher.Controllers
 
             try
             {
-                var sets = JsonConvert.DeserializeObject<Dictionary<string, JsonSet>>(System.IO.File.ReadAllText(@"C:\Users\Néné\Documents\ProjectWeb\MTGWatcher\MTGWatcher\MTGWatcher\StaticJson\AllSets.json"));
+                var sets = JsonConvert.DeserializeObject<Dictionary<string, JsonSet>>(System.IO.File.ReadAllText(@"C:\Users\m.gillet\Documents\GitHub\MTGWatcher\MTGWatcher\StaticJson\AllSets.json"));
                 RefreshSetsProgress = 0;
                 float i = 0;
                 foreach (var item in sets)

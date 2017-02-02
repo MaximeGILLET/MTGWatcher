@@ -1,6 +1,8 @@
 ﻿using MTGWatcher.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -27,14 +29,14 @@ namespace MTGWatcher.Controllers
 
             return View();
         }
-
-        public ActionResult API()
+        
+        public ActionResult RefreshMkmProducts()
         {
+            var rawString64 = JsonConvert.DeserializeObject<ProductList>(RequestHelper.mkmRequest("https://www.mkmapi.eu/ws/v2.0/output.json/productlist")).productsfile;
+            var gzip = Convert.FromBase64String(rawString64);
+            System.IO.File.WriteAllBytes(HttpContext.Server.MapPath("~/MkmFiles/mkmProduct.gzip"), gzip);
 
-            var req = new RequestHelper();
-            req.makeRequest();
-
-            return View();
-        }
+            return View("Index");
+        }             
     }
 }
