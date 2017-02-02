@@ -65,4 +65,14 @@ namespace MTGWatcher.Models
         public object links;
 
     }
+
+    public class ProductFileItem
+    {
+        public string idProduct;
+        public string Name;
+        public string CategoryID;
+        public string Category;
+        public string ExpansionID;
+        public string DateAdded;
+    }
 }

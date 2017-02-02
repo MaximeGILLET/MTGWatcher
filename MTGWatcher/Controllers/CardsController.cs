@@ -12,6 +12,8 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Data.Entity.Validation;
 using System.Linq.Dynamic;
+using System.IO.Compression;
+using Microsoft.VisualBasic.FileIO;
 
 namespace MTGWatcher.Controllers
 {
@@ -84,7 +86,7 @@ namespace MTGWatcher.Controllers
             }
             if(string.IsNullOrEmpty(card.ImageUrl)) card.ImageUrl = CardImageUrlFind(card.Name);
 
-            var product = JsonConvert.DeserializeObject<Product>(RequestHelper.mkmRequest("https://www.mkmapi.eu/ws/v2.0/products/find?search="+Url.Encode(card.Name)+"&exact=true&idGame=1&idLanguage=1"));
+            //var product = JsonConvert.DeserializeObject<Product>(RequestHelper.mkmRequest("https://www.mkmapi.eu/ws/v2.0/products/find?search="+Url.Encode(card.Name)+"&exact=true&idGame=1&idLanguage=1"));
 
             return View(card);
         }
@@ -201,7 +203,7 @@ namespace MTGWatcher.Controllers
 
             try
             {
-                var sets = JsonConvert.DeserializeObject<Dictionary<string, JsonSet>>(System.IO.File.ReadAllText(@"C:\Users\m.gillet\Documents\GitHub\MTGWatcher\MTGWatcher\StaticJson\AllSets.json"));
+                var sets = JsonConvert.DeserializeObject<Dictionary<string, JsonSet>>(System.IO.File.ReadAllText(HttpContext.Server.MapPath("~/StaticJson/AllSets.json")));
                 RefreshSetsProgress = 0;
                 float i = 0;
                 foreach (var item in sets)
@@ -257,6 +259,68 @@ namespace MTGWatcher.Controllers
             string urlImage =string.Format("http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={0}&type=card", multiverseid);
             resp.Dispose();
             return string.IsNullOrEmpty(urlImage)?null:urlImage;
+        }
+
+
+        public ActionResult RefreshMkmProducts()
+        {
+            var timestamp = DateTime.Now.ToString("yyyyMMddhhmmss");
+            var rawString64 = JsonConvert.DeserializeObject<ProductList>(RequestHelper.mkmRequest("https://www.mkmapi.eu/ws/v2.0/output.json/productlist")).productsfile;
+            var gzip = Convert.FromBase64String(rawString64);
+            System.IO.File.WriteAllBytes(HttpContext.Server.MapPath("~/MkmFiles/mkmProduct" + timestamp + ".gzip"), gzip);
+
+            //Uncompress to readable csv file
+            var fileToDecompress = new FileInfo(HttpContext.Server.MapPath("~/MkmFiles/mkmProduct" + timestamp + ".gzip"));
+            using (FileStream originalFileStream = fileToDecompress.OpenRead())
+            {
+                string currentFileName = fileToDecompress.FullName;
+                string newFileName = HttpContext.Server.MapPath("~/MkmFiles/mkmProduct" + timestamp + ".csv");
+
+                using (FileStream decompressedFileStream = System.IO.File.Create(newFileName))
+                {
+                    using (GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress))
+                    {
+                        decompressionStream.CopyTo(decompressedFileStream);
+                    }
+                }
+            }
+            var productList = new List<ProductFileItem>();
+            //Parse csv file
+            using (TextFieldParser parser = new TextFieldParser(HttpContext.Server.MapPath("~/MkmFiles/mkmProduct" + timestamp + ".csv")))
+            {
+                parser.TextFieldType = FieldType.Delimited;
+                parser.SetDelimiters(",");
+                while (!parser.EndOfData)
+                {
+                    //Process row
+                    string[] fields = parser.ReadFields();
+                    var product = new ProductFileItem();
+                    if (!fields[3].Equals("Magic Single")) continue;
+                    product.idProduct = fields[0];
+                    product.Name = fields[1];
+                    product.CategoryID = fields[2];
+                    product.Category = fields[3];
+                    product.ExpansionID = fields[4];
+                    product.DateAdded = fields[5];
+
+                    productList.Add(product);
+                    var cardMatch = db.Cards.Where(c => c.Name == product.Name).FirstOrDefault();
+                    if(cardMatch != null)
+                    {
+                        int id = -1;
+                        if(!int.TryParse(product.idProduct,out id))continue;
+
+                        cardMatch.MkmProductId = id;
+                        db.Entry(cardMatch).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                   
+
+
+                }
+            }
+            
+            return View("Index");
         }
     }
 }
