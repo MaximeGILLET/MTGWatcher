@@ -18,7 +18,13 @@
         <p>@Model.Text</p>
         <p><i>"@Model.Flavor"</i></p>
         <p>artist : @Model.Artist</p>
-    </div>    
+    </div> 
+    <div class="col-lg-8">
+        <h4>Avergage Price : @Model.mkmProduct.priceGuide.AVG €</h4>
+        <h4>Lowest Price : @Model.mkmProduct.priceGuide.LOW €</h4>
+        <h4>Lowest Foil Price : @Model.mkmProduct.priceGuide.LOWFOIL €</h4>
+        <h4>Price Trend : @Model.mkmProduct.priceGuide.TREND €</h4>
+    </div>     
 </div>
 <br />
 <div class="col-lg-12">

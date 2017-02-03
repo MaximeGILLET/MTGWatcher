@@ -29,14 +29,6 @@ namespace MTGWatcher.Controllers
 
             return View();
         }
-        
-        public ActionResult RefreshMkmProducts()
-        {
-            var rawString64 = JsonConvert.DeserializeObject<ProductList>(RequestHelper.mkmRequest("https://www.mkmapi.eu/ws/v2.0/output.json/productlist")).productsfile;
-            var gzip = Convert.FromBase64String(rawString64);
-            System.IO.File.WriteAllBytes(HttpContext.Server.MapPath("~/MkmFiles/mkmProduct.gzip"), gzip);
-
-            return View("Index");
-        }             
+                
     }
 }

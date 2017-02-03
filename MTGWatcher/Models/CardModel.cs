@@ -12,6 +12,7 @@ namespace MTGWatcher.Models
         [Key]
         [Column(Order = 1)]
         public int CardId { get; set; }
+        public int MkmProductId { get; set; }
         public string Name { get; set;}
         public string ImageUrl { get; set; }
         public Card(string name)
@@ -22,6 +23,8 @@ namespace MTGWatcher.Models
         {
           
         }
+        [NotMapped]
+        public Product mkmProduct { get; set; }
         public int SetId { get; set; }
     }
 
