@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<?xml version="1.0"?>
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
   <runtime>
@@ -10,4 +11,18 @@
       </dependentAssembly>
     </assemblyBinding>
   </runtime>
+=======
+﻿<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly xdt:Transform="Remove"
+          xdt:Locator="Condition(./_defaultNamespace:assemblyIdentity/@name='System.Web.Helpers')" >
+      </dependentAssembly>
+      <dependentAssembly xdt:Transform="Remove"
+          xdt:Locator="Condition(./_defaultNamespace:assemblyIdentity/@name='System.Web.WebPages')" >
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+>>>>>>> origin/master
 </configuration>

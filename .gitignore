@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿################################################################################
 # Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
 ################################################################################
@@ -6,3 +7,12 @@
 /MTGWatcher/bin
 /MTGWatcher/obj/Debug
 WatcherDB/WatcherDB.dbmdl
+=======
+﻿################################################################################
+# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/MTGWatcher/bin
+/MTGWatcher/obj/Debug
+>>>>>>> origin/master
