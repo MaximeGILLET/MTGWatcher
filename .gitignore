@@ -1,10 +1,8 @@
-﻿################################################################################
-# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
-################################################################################
-
 /.vs
 /MTGWatcher/bin
 /MTGWatcher/obj/Debug
 WatcherDB/WatcherDB.dbmdl
 /.dll
 /MTGWatcher/ApplicationInsights.config
+/MTGWatcher/packages
+
