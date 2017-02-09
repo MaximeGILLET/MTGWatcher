@@ -186,8 +186,17 @@ namespace MTGWatcher.Controllers
         {
             try
             {
-                var cards = JsonConvert.DeserializeObject<Dictionary<string, JsonCard>>(System.IO.File.ReadAllText(@"C:\Users\Néné\Documents\ProjectWeb\MTGWatcher\MTGWatcher\MTGWatcher\StaticJson\AllCards.json"));
-                var dbCards = cards.Select(x => new Card(x.Value.name)).ToList();
+                var cards = JsonConvert.DeserializeObject<Dictionary<string, JsonCard>>(System.IO.File.ReadAllText(HttpContext.Server.MapPath("~/StaticJson/AllCards.json")));
+                var dbCards = cards.Select(x => new Card() {
+                    Name = x.Value.name ,
+                    Cmc = x.Value.cmc,
+                    ColorIdentity = x.Value.colorIdentity,
+                    Colors = x.Value.colors,
+                    ManaCost = x.Value.manaCost ,
+                    Text = x.Value.text ,
+                    Power = x.Value.power,
+                    Toughness = x.Value.toughness,
+                    Types = x.Value.types}).ToList();
                 db.Cards.AddRange(dbCards);
                 db.SaveChanges();
 
@@ -295,17 +304,16 @@ namespace MTGWatcher.Controllers
                 {
                     //Process row
                     string[] fields = parser.ReadFields();
-                    var product = new ProductFileItem();
                     if (!fields[3].Equals("Magic Single")) continue;
+                    var product = new ProductFileItem();                    
                     product.idProduct = fields[0];
                     product.Name = fields[1];
                     product.CategoryID = fields[2];
                     product.Category = fields[3];
                     product.ExpansionID = fields[4];
                     product.DateAdded = fields[5];
-
                     productList.Add(product);
-                    var cardMatch = db.Cards.Where(c => c.Name == product.Name).FirstOrDefault();
+                    var cardMatch = db.Cards.Where(c => c.Name == product.Name && c.MkmProductId <= 0).FirstOrDefault();
                     if(cardMatch != null)
                     {
                         int id = -1;

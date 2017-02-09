@@ -77,10 +77,10 @@
 
                                     columns.Add(grid.Column("PlainTypes", "Types"));
                                     columns.Add(grid.Column("PowerThoughness", "Power"));
-                                    columns.Add(grid.Column("Rarity", format: (item) => {
+                                    /*columns.Add(grid.Column("Rarity", format: (item) => {
 
                                         return new HtmlString(string.Format("<b class='gradient-{0}'>{1}</b>",((MTGWatcher.Models.Card)((WebGridRow)item).Value).Rarity.ToLower(), ((MTGWatcher.Models.Card)((WebGridRow)item).Value).Rarity));
-                                    }));
+                                    }));*/
 
                                    @grid.GetHtml(htmlAttributes: new { id = "CardList" }, tableStyle: "table-striped table-hover table-bordered", columns: columns)
                                     if (Model.ResultCount > Model.PageSize)

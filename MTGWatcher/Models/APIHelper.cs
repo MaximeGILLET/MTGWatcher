@@ -39,9 +39,9 @@ namespace MTGWatcher.Models
     class OAuthHeader
     {
         /// <summary>App Token</summary>
-        protected String appToken = "";
+        protected String appToken = "3g1xTLCLwzmsCd7j";
         /// <summary>App Secret</summary>
-        protected String appSecret = "";
+        protected String appSecret = "3pAKr8ECy8IitxqTq8AOm50Xqa8UU7Iy";
         /// <summary>Access Token (Class should also implement an AccessToken property to set the value)</summary>
         protected String accessToken = "";
         /// <summary>Access Token Secret (Class should also implement an AccessToken property to set the value)</summary>

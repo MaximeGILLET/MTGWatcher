@@ -1,0 +1,9 @@
+C:\Users\m.gillet\Documents\GitHub\MTGWatcher\WatcherDB\bin\Debug\WatcherDB.dacpac
+C:\Users\m.gillet\Documents\GitHub\MTGWatcher\WatcherDB\bin\Debug\WatcherDB.dll
+C:\Users\m.gillet\Documents\GitHub\MTGWatcher\WatcherDB\bin\Debug\WatcherDB.pdb
+C:\Users\m.gillet\Documents\GitHub\MTGWatcher\WatcherDB\obj\Debug\Model.xml
+C:\Users\m.gillet\Documents\GitHub\MTGWatcher\WatcherDB\obj\Debug\refactor.xml
+C:\Users\m.gillet\Documents\GitHub\MTGWatcher\WatcherDB\obj\Debug\postdeploy.sql
+C:\Users\m.gillet\Documents\GitHub\MTGWatcher\WatcherDB\obj\Debug\predeploy.sql
+C:\Users\m.gillet\Documents\GitHub\MTGWatcher\WatcherDB\obj\Debug\WatcherDB.dll
+C:\Users\m.gillet\Documents\GitHub\MTGWatcher\WatcherDB\obj\Debug\WatcherDB.pdb
