@@ -6,3 +6,5 @@
 /MTGWatcher/bin
 /MTGWatcher/obj/Debug
 WatcherDB/WatcherDB.dbmdl
+/.dll
+/MTGWatcher/ApplicationInsights.config
